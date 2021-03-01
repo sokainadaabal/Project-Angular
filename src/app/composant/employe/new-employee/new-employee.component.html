@@ -1,0 +1,85 @@
+<div class="create-page">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Create User</li>
+    </ol>
+  </nav>
+  <div class="page-content">
+    <div class="row">
+      <div class="col col-md-8">
+        <!-- Student form -->
+        <form
+          [formGroup]="employeeForm"
+          (ngSubmit)="submitStudentData()"
+          novalidate
+        >
+          <div class="row">
+            <div class="col-lg-5 col-md-12 col-sm-12">
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <label>Nom</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="nom"
+                    required
+                  />
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label>Prénom</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="prenom"
+                  />
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label>CNI</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="cni"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <label>Emission</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    formControlName="emission"
+                    required
+                  />
+                </div>
+
+                <div class="col-md-12 mb-3">
+                  <label>Salaire</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="salaire"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group text-right">
+            <button
+              type="button"
+              class="btn btn-secondary gap-right"
+              (click)="ResetForm()"
+            >
+              Réinitiliser
+            </button>
+            <br /><br />
+            <button type="submit" class="btn btn-success">
+              Ajouter Employer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

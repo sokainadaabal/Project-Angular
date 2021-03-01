@@ -1,0 +1,74 @@
+<div class="create-page">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Lists des Bus</li>
+    </ol>
+    <a routerLink="/bus/new" class="btn btn-success" style="tect-align: end">
+      <ion-icon name="add"></ion-icon>
+      Ajoute Bus
+    </a>
+    <br /><br />
+  </nav>
+
+  <!-- Preloader shows before the data loads-->
+  <div class="no-data text-center" *ngIf="preLoader">
+    <img src="assets/preloader.gif" class="preloader-icon" alt="No Bus" />
+  </div>
+
+  <!-- No data shows when their is no student data available -->
+  <div class="no-data text-center" *ngIf="noData">
+    <img
+      src="assets/bus.png"
+      style="width: 400px"
+      class="nodata-msg"
+      alt="No Employe"
+    />
+    <p class="nodata-msg">acune Bus ajouter!</p>
+  </div>
+  <div class="page-content">
+    <div class="row">
+      <div class="col col-md-12" *ngIf="hideWhenNoEmploye">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Ligne</th>
+              <th>Trajet</th>
+              <th>Prix</th>
+              <th>Conditeur</th>
+              <th>Serviant</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bus of Bus">
+              <td scope="row">{{ bus.$key }}</td>
+              <td>
+                <a href="soengsouy.com">{{ bus.ligne }}</a>
+              </td>
+              <td>{{ bus.trajet }}</td>
+              <td>{{ bus.prix }} DH</td>
+              <td>
+                <span class="label label-success">{{ bus.condicteur }}</span>
+              </td>
+              <td>{{ bus.serviant }}</td>
+              <td class="action-block" style="text-align: center">
+                <!-- routerLink="/edit-student/{{student.$key}}" is refered to { path: 'edit-student/:id', component: EditStudentComponent } in app-routing.moudles.ts -->
+                <ion-icon
+                  name="create"
+                  style="color: blue"
+                  routerLink="/bus/edit/{{ bus.$key }}"
+                ></ion-icon>
+                <ion-icon
+                  name="trash"
+                  style="color: red"
+                  (click)="deleteBus(bus)"
+                ></ion-icon>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

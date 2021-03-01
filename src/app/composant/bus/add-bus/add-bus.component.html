@@ -1,0 +1,79 @@
+<div class="create-page">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Create Bus</li>
+    </ol>
+  </nav>
+  <div class="page-content">
+    <div class="row">
+      <div class="col col-md-8">
+        <!-- Bus form -->
+        <form [formGroup]="busForm" (ngSubmit)="submitBusData()" novalidate>
+          <div class="row">
+            <div class="col-lg-5 col-md-12 col-sm-12">
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <label>ligne</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="ligne"
+                    required
+                  />
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label>Trajet</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="trajet"
+                  />
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label>prix</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="prix"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <label>Condicteur</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    formControlName="condicteur"
+                    required
+                  />
+                </div>
+
+                <div class="col-md-12 mb-3">
+                  <label>serviant</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="serviant"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group text-right">
+            <button
+              type="button"
+              class="btn btn-secondary gap-right"
+              (click)="ResetForm()"
+            >
+              Réinitialiser
+            </button>
+            <br /><br />
+            <button type="submit" class="btn btn-success">Ajouter Bus</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

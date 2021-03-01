@@ -1,0 +1,79 @@
+<div class="create-page">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">
+        Lists des employes
+      </li>
+    </ol>
+  </nav>
+
+  <!-- Preloader shows before the data loads-->
+  <div class="no-data text-center" *ngIf="preLoader">
+    <img src="assets/preloader.gif" class="preloader-icon" alt="No Employe" />
+  </div>
+
+  <!-- No data shows when their is no student data available -->
+  <div class="no-data text-center" *ngIf="noData">
+    <img
+      src="assets/no-employe.svg"
+      style="width: 500px"
+      class="nodata-msg"
+      alt="No Employe"
+    />
+    <p class="nodata-msg">Pas d'Employer Ajouter!</p>
+    <a
+      routerLink="/employee/new"
+      class="btn btn-success"
+      style="tect-align: end"
+    >
+      <ion-icon name="add"></ion-icon>
+      Ajoute Employe
+    </a>
+  </div>
+  <div class="page-content">
+    <div class="row">
+      <div class="col col-md-12" *ngIf="hideWhenNoEmploye">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>CNI</th>
+              <th>Emission</th>
+              <th>Salaire</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employe of Employe">
+              <td scope="row">{{ employe.$key }}</td>
+              <td>
+                <a href="soengsouy.com">{{ employe.nom }}</a>
+              </td>
+              <td>{{ employe.prenom }}</td>
+              <td>{{ employe.cni }}</td>
+              <td>
+                <span class="label label-success">{{ employe.emission }}</span>
+              </td>
+              <td>{{ employe.salaire }} DH</td>
+              <td class="action-block" style="text-align: center">
+                <!-- routerLink="/edit-student/{{student.$key}}" is refered to { path: 'edit-student/:id', component: EditStudentComponent } in app-routing.moudles.ts -->
+                <ion-icon
+                  name="create"
+                  style="color: blue"
+                  routerLink="/employee/edit-employee/{{ employe.$key }}"
+                ></ion-icon>
+                <ion-icon
+                  name="trash"
+                  style="color: red"
+                  (click)="deleteEmploye(employe)"
+                ></ion-icon>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
